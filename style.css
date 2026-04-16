@@ -134,3 +134,24 @@ footer {
     font-size: 0.9rem;
     color: #999;
 }
+
+/* Container for the tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap; /* Allows tags to drop to the next line if needed */
+    gap: 8px;       /* Adds space between the pills */
+    margin: 15px 0; /* Adds breathing room above and below the tags */
+}
+
+/* Individual Pill/Badge styling */
+.project-tags span {
+    background-color: #e9ecef; /* Light gray background */
+    color: #495057;           /* Darker text for readability */
+    font-size: 12px;           /* Smaller than the main description */
+    font-weight: 600;          /* Makes them slightly bold to pop */
+    padding: 4px 12px;         /* Creates the "box" around the text */
+    border-radius: 20px;       /* Rounds the corners for a "pill" look */
+    border: 1px solid #dee2e6; /* Optional: adds a subtle outline */
+    text-transform: uppercase; /* Makes them look more like technical labels */
+    letter-spacing: 0.5px;
+}
