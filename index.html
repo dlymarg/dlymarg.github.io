@@ -9,17 +9,24 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="links.html">Links</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <a href="#home"><img src="portrait.jpg" alt="Derek" class="header-profile-pic" onerror="this.src='https://via.placeholder.com/200'"></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#links">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
+<!-- 
+    <div class="home-banner">
+        <img src="delicate_arch.jpeg" alt="Delicate Arch Header Image">
+    </div> -->
 
     <main class="container">
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="profile-pic">
                 <img src="portrait.jpg" alt="Your Portrait" onerror="this.src='https://via.placeholder.com/200'">
             </div>
@@ -36,10 +43,121 @@
                 </p>
             </div>
         </section>
+
+        <section id="projects">
+            <h1 class="centered">My Projects</h1>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>TestGPT</h3>
+                    <p>From-scratch implementation of the GPT transformer architecture focusing on deep-level mechanics and generative AI performance.</p>
+                    <div class="project-tags">
+                        <span>PyTorch</span>
+                        <span>Transformers</span>
+                        <span>LLM Architecture</span>
+                        <span>Generative AI</span>
+                        <span>GPU Computing</span>
+                    </div>
+                    <a href="https://github.com/dlymarg/TestGPT" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>GMU Faculty and Researcher Experts List</h3>
+                    <p>Research expertise mapping system using Python NLP, Neo4j graph databases, and NeoDash visualization.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>NLP</span>
+                        <span>Neo4j</span>
+                        <span>Web Scraping</span>
+                        <span>NeoDash</span>
+                    </div>
+                    <a href="https://github.com/bzevin/Team-Demystifiers-DAEN-690" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>U.S. Patent Phrase to Phrase Matching</h3>
+                    <p>Semantic similarity modeling for U.S. patent phrase-to-phrase matching using deep learning and NLP.</p>
+                    <div class="project-tags">
+                        <span>Deep Learning</span>
+                        <span>NLP</span>
+                        <span>LSTM/RNN</span>
+                        <span>Semantic Similarity</span>
+                        <span>Pearson Correlation</span>
+                    </div>
+                    <a href="https://github.com/csmitty341/Deep-Learning-" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>An Application of the Mapper Algorithm to Sports Analytics in College Basketball</h3>
+                    <p>Python-driven basketball analytics and performance modeling for player efficiency tracking.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>Sports Analytics</span>
+                        <span>Data Visualization</span>
+                        <span>Performance Modeling</span>
+                    </div>
+                    <a href="https://github.com/dlymarg/tiger-bball" class="project-link">View on GitHub →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Donation Record Analysis for the Baltimore Humane Society</h3>
+                    <p>Data-driven donation analysis and growth strategy for the Baltimore Humane Society using Python</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Exploratory Data Analysis (EDA)</span>
+                        <span>Fundraising Strategy</span>
+                        <span>Predictive Modeling</span>
+                        <span>Non-Profit Analytics</span>
+                    </div>
+                    <a href="https://github.com/dlymarg/aml-bhs" class="project-link">View on GitHub →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="links" class="centered">
+            <h1>Let's Connect</h1>
+            <p>I am always open to discussing new opportunities or collaborations.</p>
+            
+            <div class="links-container">
+                <!-- <a href="mailto:your.email@example.com" class="link-btn">Email Me</a> -->
+                <a href="https://www.linkedin.com/in/derek-margulies/" class="link-btn">LinkedIn</a>
+                <a href="https://github.com/dlymarg" class="link-btn">GitHub</a>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Derek Margulies. Built with care.</p>
+        <p>&copy; <span id="year"></span> Derek Margulies. Built with care.</p>
     </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 1. Shrink header logic on scroll
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Watch the main profile picture to trigger the mini header picture
+        const mainPic = document.querySelector('.profile-pic img');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If the main picture is NOT intersecting the screen (out of view)
+                if (!entry.isIntersecting) {
+                    header.classList.add('show-pic');
+                } else {
+                    header.classList.remove('show-pic');
+                }
+            });
+        }, { threshold: 0 }); // threshold: 0 triggers the exact moment it leaves the viewport
+
+        if (mainPic) {
+            observer.observe(mainPic);
+        }
+    </script>
 </body>
 </html>
