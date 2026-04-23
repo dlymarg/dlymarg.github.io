@@ -117,15 +117,23 @@ section {
 /* Hero Section */
 .hero {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
 }
 
 @media screen and (max-width: 767px) {
     .hero {
         flex-direction: column;
+        align-items: center;
+    }
+    .profile-pic {
+        margin-top: 0;
     }
     
+}
+
+.profile-pic {
+    margin-top: 105px; /* Pushes the image down to specifically align with the 'About Me' header */
 }
 
 .profile-pic img {
